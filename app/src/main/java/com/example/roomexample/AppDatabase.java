@@ -24,10 +24,10 @@ public abstract class AppDatabase extends RoomDatabase {
 
             // Create the new table
             database.execSQL(
-                    "CREATE TABLE bines_new (" + BaseColumns._ID + " INTEGER, cODIGO TEXT, tCPREFIJO INTEGER, tIPOFPGO INTEGER, sAIDFPGO INTEGER, tRIDFPGO TEXT," +
-                            "tCDEBITO TEXT, fACTIVO INTEGER, tCTIPOCOM INTEGER,PRIMARY KEY(" + BaseColumns._ID + "))");
+                    "CREATE TABLE bines_new (" + BaseColumns._ID + " INTEGER Not Null, cODIGO TEXT, tCPREFIJO INTEGER Not Null, tIPOFPGO INTEGER Not Null, sAIDFPGO INTEGER Not Null, tRIDFPGO TEXT Not Null," +
+                            "tCDEBITO TEXT Not Null, fACTIVO INTEGER Not Null, tCTIPOCOM INTEGER Not Null,PRIMARY KEY(" + BaseColumns._ID + "))");
 
-            database.execSQL("CREATE INDEX index_CATALOGO_BINES__id ON bines_new ("+ BaseColumns._ID +")");
+            database.execSQL("CREATE INDEX index_CATALOGO_BINES__id ON bines_new (_id)");
 
 
             // Copy the data
