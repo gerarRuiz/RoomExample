@@ -39,7 +39,7 @@ public class EntidadBines {
     private int fACTIVO;
 
     @ColumnInfo(name = "tCTIPOCOM")
-    private int tCTIPOCOM;
+    private String tCTIPOCOM;
 
 
     public long getId() {
@@ -106,15 +106,15 @@ public class EntidadBines {
         this.fACTIVO = fACTIVO;
     }
 
-    public int getTCTIPOCOM() {
+    public String getTCTIPOCOM() {
         return tCTIPOCOM;
     }
 
-    public void setTCTIPOCOM(int tCTIPOCOM) {
+    public void setTCTIPOCOM(int tctipocom) {
         this.tCTIPOCOM = tCTIPOCOM;
     }
 
-    public EntidadBines(String cODIGO, int tCPREFIJO, int tIPOFPGO, int sAIDFPGO, String tRIDFPGO, String tCDEBITO, int fACTIVO, int tCTIPOCOM) {
+    public EntidadBines(String cODIGO, int tCPREFIJO, int tIPOFPGO, int sAIDFPGO, String tRIDFPGO, String tCDEBITO, int fACTIVO, String tCTIPOCOM) {
         this.cODIGO = cODIGO;
         this.tCPREFIJO = tCPREFIJO;
         this.tIPOFPGO = tIPOFPGO;

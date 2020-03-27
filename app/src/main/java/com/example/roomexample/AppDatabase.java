@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {EntidadBines.class}, version = 2)
+@Database(entities = {EntidadBines.class}, version = 3)
 public abstract class AppDatabase extends RoomDatabase {
 
 
@@ -16,19 +16,19 @@ public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase appDatabase;
 
-    public static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+    public static final Migration MIGRATION_2_3 = new Migration(2, 3) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
 
-            database.execSQL("DROP INDEX index_CATALOGO_BINES__id");
 
             // Create the new table
             database.execSQL(
-                    "CREATE TABLE bines_new (" + BaseColumns._ID + " INTEGER Not Null, cODIGO TEXT, tCPREFIJO INTEGER Not Null, tIPOFPGO INTEGER Not Null, sAIDFPGO INTEGER Not Null, tRIDFPGO TEXT Not Null," +
-                            "tCDEBITO TEXT Not Null, fACTIVO INTEGER Not Null, tCTIPOCOM INTEGER Not Null,PRIMARY KEY(" + BaseColumns._ID + "))");
+                    "CREATE TABLE bines_new (" + BaseColumns._ID + " INTEGER Not Null, cODIGO TEXT, tCPREFIJO INTEGER Not Null, tIPOFPGO INTEGER Not Null, sAIDFPGO INTEGER Not Null, tRIDFPGO TEXT," +
+                            "tCDEBITO TEXT, fACTIVO INTEGER Not Null, tCTIPOCOM TEXT,PRIMARY KEY(" + BaseColumns._ID + "))");
 
-            database.execSQL("CREATE INDEX index_CATALOGO_BINES__id ON bines_new (_id)");
+            database.execSQL("DROP INDEX index_CATALOGO_BINES__id");
 
+            database.execSQL("CREATE UNIQUE INDEX index_CATALOGO_BINES__id ON bines_new (" + BaseColumns._ID + ")");
 
             // Copy the data
             database.execSQL(

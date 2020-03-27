@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements ToksWebServicesCo
 
         database = Room.databaseBuilder(MainActivity.this, AppDatabase.class, Constantes.BD_NAME)
                 .allowMainThreadQueries()
-                .addMigrations(database.MIGRATION_1_2)
+                .addMigrations(database.MIGRATION_2_3)
                 .build();
 
 
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements ToksWebServicesCo
                 String tr_idfpgo = jsonObject.getString("TR_IDFPGO");
                 String tc_debito = jsonObject.getString("TC_DEBITO");
                 int factivo = jsonObject.getInt("FACTIVO");
-                int tc_tipocom = jsonObject.getInt("TC_TIPOCOM");
+                String tc_tipocom = jsonObject.getString("TC_TIPOCOM");
 
                 long resultado = database.entidadBinesDao().insert(new EntidadBines(codigo, tc_prefijo, tipo_fpgo, sa_idfpgo, tr_idfpgo,
                         tc_debito, factivo, tc_tipocom));
